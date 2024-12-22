@@ -10,7 +10,7 @@
 
 <body>
     <header>
-       <span>S</span>
+        <span>S</span>
         <div class="title">
             Summer
         </div>
@@ -19,9 +19,9 @@
         </div>
         <div class="options">
             <button id="stopwatch" class="no_disp" title="Stopwatch">Stopwatch</button>
-            <button id="stopwatch" class="disp" title="Stopwatch">⏱️</button>
+            <button id="stopwatch-icon" class="disp" title="Stopwatch">⏱️</button>
             <button id="timer" class="no_disp" title="Timer">Timer</button>
-            <button id="timer" class="disp" title="Timer">⏳</button>
+            <button id="timer-icon" class="disp" title="Timer">⏳</button>
         </div>
 
     </header>
@@ -39,7 +39,7 @@
     </div>
 
     <footer>
-        All Copylefts reserved to <br> <a href="https://github.com/Code-with-Summer">@Suruchi Singh</a>
+        All Copylefts reserved to <a href="https://github.com/Code-with-Summer">@Suruchi Singh</a>
     </footer>
 
     <script>
@@ -58,6 +58,10 @@
         document.getElementById("stopwatch").addEventListener("click", () => {
             window.location.href = "stopwatch.html";})
         document.getElementById("timer").addEventListener("click", () => {
+            window.location.href = "timer.html";});
+        document.getElementById("stopwatch-icon").addEventListener("click", () => {
+            window.location.href = "stopwatch.html";})
+        document.getElementById("timer-icon").addEventListener("click", () => {
             window.location.href = "timer.html";});
 
     </script>
