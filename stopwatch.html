@@ -10,11 +10,14 @@
 
 <body>
     <header>
+        <span>S</span>
         <div class="title">Summer</div>
         <div class="heading">Stopwatch</div>
         <div class="options">
-            <button id="clock">Clock</button>
-            <button id="timer">Timer</button>
+            <button id="clock" class="no_disp" title="Clock">Clock</button>
+            <button id="clock" class="disp" title="Clock">🕛</button>
+            <button id="timer" class="no_disp" title="Timer">Timer</button>
+            <button id="timer" class="disp" title="Timer">⏳</button>
         </div>
     </header>
 
@@ -34,7 +37,7 @@
         </div>
     </div>
 
-    <footer>All Copylefts reserved to <a href="https://github.com/Code-with-Summer">@Suruchi Singh</a></footer>
+    <footer>All Copylefts reserved to <br> <a href="https://github.com/Code-with-Summer">@Suruchi Singh</a></footer>
 
     <script>
         let stopwatchInterval;
