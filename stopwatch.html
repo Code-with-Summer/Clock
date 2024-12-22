@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stopwatch</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <div class="title">Summer</div>
+        <div class="heading">Stopwatch</div>
+        <div class="options">
+            <button id="clock">Clock</button>
+            <button id="timer">Timer</button>
+        </div>
+    </header>
+
+    <div class="stopwatch-box">
+        <div class="container-stop">
+            <div class="stopwatch">
+                <h1>
+                    Stopwatch ⏱️
+                </h1>
+                <div class="stopwatch-display" id="stopwatch-display">00:00:00.000</div>
+                <div class="stopwatch-controls">
+                    <button id="start">Start</button>
+                    <button id="stop">Stop</button>
+                    <button id="reset">Reset</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>All Copylefts reserved to <a href="https://github.com/Code-with-Summer">@Suruchi Singh</a></footer>
+
+    <script>
+        let stopwatchInterval;
+        let elapsedTime = 0;
+        let running = false;
+
+        const display = document.getElementById("stopwatch-display");
+        const startButton = document.getElementById("start");
+        const stopButton = document.getElementById("stop");
+        const resetButton = document.getElementById("reset");
+
+        // Format time
+        function formatTime(time) {
+            const milliseconds = time % 1000;
+            const totalSeconds = Math.floor(time / 1000);
+            const hours = Math.floor(totalSeconds / 3600);
+            const minutes = Math.floor((totalSeconds % 3600) / 60);
+            const seconds = totalSeconds % 60;
+
+            return (
+                (hours < 10 ? "0" : "") + hours + ":" +
+                (minutes < 10 ? "0" : "") + minutes + ":" +
+                (seconds < 10 ? "0" : "") + seconds + "." +
+                (milliseconds < 100 ? (milliseconds < 10 ? "00" : "0") : "") + milliseconds
+            );
+        }
+
+        // Update the display
+        function updateDisplay() {
+            display.textContent = formatTime(elapsedTime);
+        }
+
+        // Start the stopwatch
+        startButton.addEventListener("click", () => {
+            if (!running) {
+                running = true;
+                const startTime = Date.now() - elapsedTime;
+                stopwatchInterval = setInterval(() => {
+                    elapsedTime = Date.now() - startTime;
+                    updateDisplay();
+                }, 10); // Update every 10ms for smooth milliseconds
+            }
+        });
+
+        // Stop the stopwatch
+        stopButton.addEventListener("click", () => {
+            clearInterval(stopwatchInterval);
+            running = false;
+        });
+
+        // Reset the stopwatch
+        resetButton.addEventListener("click", () => {
+            clearInterval(stopwatchInterval);
+            elapsedTime = 0;
+            running = false;
+            updateDisplay();
+        });
+
+        // Navigation
+        document.getElementById("clock").addEventListener("click", () => {
+            window.location.href = "index.html";
+        });
+
+        document.getElementById("timer").addEventListener("click", () => {
+            window.location.href = "timer.html";
+        });
+    </script>
+</body>
+
+</html>

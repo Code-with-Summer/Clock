@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clock</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <div class="title">
+            Summer
+        </div>
+        <div class="heading">
+            Clock
+        </div>
+        <div class="options">
+            <button id="stopwatch">Stopwatch</button>
+            <button id="timer">Timer</button>
+        </div>
+
+    </header>
+
+    <div class="clock-box">
+        <div class="container">
+            <div class="clock">
+                <span id="hrs">00</span>
+                <span>:</span>
+                <span id="mins">00</span>
+                <span>:</span>
+                <span id="secs">00</span>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        All Copylefts reserved to <a href="https://github.com/Code-with-Summer">@Suruchi Singh</a>
+    </footer>
+
+    <script>
+        let hrs = document.getElementById("hrs")
+        let mins = document.getElementById("mins")
+        let secs = document.getElementById("secs")
+
+        setInterval(() => {
+            let getTime = new Date();
+
+            hrs.innerHTML = (getTime.getHours() < 10 ? "0" : "") + getTime.getHours();
+            mins.innerHTML = (getTime.getMinutes() < 10 ? "0" : "") + getTime.getMinutes();
+            secs.innerHTML = (getTime.getSeconds() < 10 ? "0" : "") + getTime.getSeconds();
+        }, 1000)
+
+        document.getElementById("stopwatch").addEventListener("click", () => {
+            window.location.href = "stopwatch.html";})
+        document.getElementById("timer").addEventListener("click", () => {
+            window.location.href = "timer.html";});
+
+    </script>
+</body>
+
+</html>

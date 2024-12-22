@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <div class="title">
+            Summer
+        </div>
+        <div class="heading">
+            Timer
+        </div>
+        <div class="options">
+            <button id="stopwatch">Stopwatch</button>
+            <button id="clock">Clock</button>
+        </div>
+    </header>
+    <div class="time">
+        <div class="timer-box">
+            <div class="timer">
+                <h1>Countdown Timer ⏳</h1>
+                <div class="input-container">
+                    <input type="number" id="hours" placeholder="Hours" min="0">
+                    <input type="number" id="minutes" placeholder="Minutes" min="0" max="59">
+                    <input type="number" id="seconds" placeholder="Seconds" min="0" max="59">
+                </div>
+                <div class="timer-display" id="timer-display">00:00:00</div>
+                <div class="timer-controls">
+                    <button id="start">Start</button>
+                    <button id="pause">Pause</button>
+                    <button id="reset">Reset</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        All Copylefts reserved to <a href="https://github.com/Code-with-Summer">@Suruchi Singh</a>
+    </footer>
+
+    <script>
+        document.getElementById("stopwatch").addEventListener("click", () => {
+            window.location.href = "stopwatch.html";
+        })
+        document.getElementById("clock").addEventListener("click", () => {
+            window.location.href = "index.html";
+        });
+        let timerInterval;
+        let remainingTime = 0;
+
+        const timerDisplay = document.getElementById("timer-display");
+        const startButton = document.getElementById("start");
+        const pauseButton = document.getElementById("pause");
+        const resetButton = document.getElementById("reset");
+        const hoursInput = document.getElementById("hours");
+        const minutesInput = document.getElementById("minutes");
+        const secondsInput = document.getElementById("seconds");
+
+        // Update the timer display
+        function updateDisplay(time) {
+            const hrs = Math.floor(time / 3600);
+            const mins = Math.floor((time % 3600) / 60);
+            const secs = time % 60;
+            timerDisplay.textContent =
+                (hrs < 10 ? "0" : "") + hrs + ":" +
+                (mins < 10 ? "0" : "") + mins + ":" +
+                (secs < 10 ? "0" : "") + secs;
+        }
+
+        // Start the timer
+        startButton.addEventListener("click", () => {
+            if (!timerInterval) {
+                const hours = parseInt(hoursInput.value) || 0;
+                const minutes = parseInt(minutesInput.value) || 0;
+                const seconds = parseInt(secondsInput.value) || 0;
+                if (remainingTime === 0) {
+                    remainingTime = hours * 3600 + minutes * 60 + seconds;
+                }
+                timerInterval = setInterval(() => {
+                    if (remainingTime > 0) {
+                        remainingTime--;
+                        updateDisplay(remainingTime);
+                    } else {
+                        clearInterval(timerInterval);
+                        timerInterval = null;
+                        alert("Time's up!");
+                    }
+                }, 1000);
+            }
+        });
+
+        // Pause the timer
+        pauseButton.addEventListener("click", () => {
+            clearInterval(timerInterval);
+            timerInterval = null;
+        });
+
+        // Reset the timer
+        resetButton.addEventListener("click", () => {
+            clearInterval(timerInterval);
+            timerInterval = null;
+            remainingTime = 0;
+            updateDisplay(remainingTime);
+            hoursInput.value = "";
+            minutesInput.value = "";
+            secondsInput.value = "";
+        });
+
+        // Initialize the display
+        updateDisplay(remainingTime);
+
+    </script>
+</body>
+
+</html>
