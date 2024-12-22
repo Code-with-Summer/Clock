@@ -15,9 +15,9 @@
         <div class="heading">Stopwatch</div>
         <div class="options">
             <button id="clock" class="no_disp" title="Clock">Clock</button>
-            <button id="clock" class="disp" title="Clock">🕛</button>
+            <button id="clock-icon" class="disp" title="Clock">🕛</button>
             <button id="timer" class="no_disp" title="Timer">Timer</button>
-            <button id="timer" class="disp" title="Timer">⏳</button>
+            <button id="timer-icon" class="disp" title="Timer">⏳</button>
         </div>
     </header>
 
@@ -37,7 +37,7 @@
         </div>
     </div>
 
-    <footer>All Copylefts reserved to <br> <a href="https://github.com/Code-with-Summer">@Suruchi Singh</a></footer>
+    <footer>All Copylefts reserved to <a href="https://github.com/Code-with-Summer">@Suruchi Singh</a></footer>
 
     <script>
         let stopwatchInterval;
@@ -102,6 +102,13 @@
         });
 
         document.getElementById("timer").addEventListener("click", () => {
+            window.location.href = "timer.html";
+        });
+        document.getElementById("clock-icon").addEventListener("click", () => {
+            window.location.href = "index.html";
+        });
+
+        document.getElementById("timer-icon").addEventListener("click", () => {
             window.location.href = "timer.html";
         });
     </script>
